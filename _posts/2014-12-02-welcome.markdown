@@ -1,0 +1,9 @@
+---
+layout: post
+title:  "Welcome"
+date:   2014-12-02 19:36:04
+categories: meta
+---
+Welcome! I wanted a place to dump some solutions to problems I've run into in my "travels" and figured what better place than
+a github.io page! I hope my struggles can result in you wasting less time than I did.
+
