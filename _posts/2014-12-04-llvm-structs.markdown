@@ -29,12 +29,12 @@ From the official Doxygen page for the class, you create a GEP instruction using
 {% highlight c++ %}
 static GetElementPtrInst * Create (Value *Ptr, ArrayRef< Value * > IdxList, const Twine &NameStr, BasicBlock *InsertAtEnd)
 {% endhighlight %}
-The most confusing of these arguments is the ```IdxList```. From the Stackoverflow question, I was able to deduce that you need to create an ```ArrayRef<Value *>``` of the indexes (0, then the index into the struct).
-For example, the indexes for the first element of the struct will have the indexes (0, 0), the second element will be (0, 1) and so forth. To calculate the second index, I looped through the members and determined
-the index. Once I had the indexes, I needed to transform them into a ```Value *```, which I first attempted by calling: 
+The most confusing of these arguments is the ```IdxList```. From the Stackoverflow question, I was able to deduce that you need to create an ```ArrayRef<Value *>``` of the indices (0, then the index into the struct).
+For example, the indices for the first element of the struct will have the indices (0, 0), the second element will be (0, 1) and so forth. To calculate the second index, I looped through the members and determined
+the index. Once I had the indices, I needed to transform them into a ```Value *```, which I first attempted by calling: 
 {% highlight c++ %}
 llvm::ConstantInt::get(llvm::getGlobalContext(), llvm::APInt(64, index, false));
 {% endhighlight %}
-Which would cause a segfault in the ```Create``` call! After banging my head against this for a few hours, I tried **to change these indexes from ```i64```s to ```i32```s which stopped the segfaulting**!
+Which would cause a segfault in the ```Create``` call! After banging my head against this for a few hours, I tried **to change these indices from ```i64```s to ```i32```s which stopped the segfaulting**!
 Now that I could create the GEP instruction (```*Ptr``` is set to the return value from the ```AllocaInst``` call with the ```StructType```), I could pass that to either my ```StoreInst``` or ```LoadInst```
 and access the structure members!
