@@ -14,7 +14,7 @@ A lot of this was taken from [this slightly outdated guide](https://blog.rootshe
 
 ### Setup and Building
 1. ```sudo apt-get install libpam0g-dev``` for the PAM headers needed to build YubiPAM
-2. ```git clone https://github.com/firnsy/yubipam.git``` to get the latest version of the YubiPAM source
+2. ```git clone https://github.com/ranok/yubipam.git``` to get the latest version of the YubiPAM source
 3. ```cd yubipam; autoreconf --install; ./configure; make -j3; sudo make install``` to build and install
 4. ```sudo addgroup yubiauth```
 5. ```sudo touch /etc/yubikey```
@@ -31,6 +31,8 @@ The YubiKey AES key must be known to provision the system, I had a free key sitt
 4. If all worked, you should be able to verify by running: ```ykvalidate -u sirnarwhal <OTP (TAP YUBIKEY)>```
 
 ### Tying to PAM
-The last step is to add the following line to your /etc/pam.d/common-auth file to enable Yubikey 2FA:
+The last step is to add the following line to your /etc/pam.d/common-auth file before all other entries to enable Yubikey 2FA:
 
 ```auth sufficient pam_yubikey.so```
+
+Once you have verified this works for login, screensaver, sudo, etc. (you should tap the Yubikey first, then enter password) change ```sufficient``` to ```required```.
