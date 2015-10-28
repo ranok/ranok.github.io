@@ -14,7 +14,7 @@ A lot of this was taken from [this slightly outdated guide](https://blog.rootshe
 
 ### Setup and Building
 1. ```sudo apt-get install libpam0g-dev``` for the PAM headers needed to build YubiPAM
-2. ```git clone https://github.com/ranok/yubipam.git``` to get the latest version of the YubiPAM source
+2. ```git clone https://github.com/firnsy/yubipam.git``` to get the latest version of the YubiPAM source
 3. ```cd yubipam; autoreconf --install; ./configure; make -j3; sudo make install``` to build and install
 4. ```sudo addgroup yubiauth```
 5. ```sudo touch /etc/yubikey```
