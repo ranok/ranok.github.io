@@ -33,6 +33,6 @@ The YubiKey AES key must be known to provision the system, I had a free key sitt
 ### Tying to PAM
 The last step is to add the following line to your /etc/pam.d/common-auth file before all other entries to enable Yubikey 2FA:
 
-```auth sufficient pam_yubikey.so```
+```auth sufficient pam_yubikey.so no_passcode```
 
 Once you have verified this works for login, screensaver, sudo, etc. (you should tap the Yubikey first, then enter password) change ```sufficient``` to ```required```.
