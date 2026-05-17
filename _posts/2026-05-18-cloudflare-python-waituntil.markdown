@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Deferring execution in Cloudflare Workers (Python)"
-date:   2026-05-18 10:40:00
+date:   2026-05-17 10:40:00
 categories: cloudflare, worker, python
 ---
 I'm a big fan of the developer experience of Cloudflare Workers. They reduce the friction to get something online and scaling is seamless. I have an existing body of Python code, and I wanted to reuse some of
